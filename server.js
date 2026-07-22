@@ -12,6 +12,12 @@ app.get("/", (req, res) => {
   res.send("Hello Dhanux!");
 });
 
+app.get("/api/fake", async (req, res) => {
+  await fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then(response => response.json())
+  .then(data => res.send(data));
+});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
